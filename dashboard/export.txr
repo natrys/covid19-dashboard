@@ -1,0 +1,18 @@
+@(coll)@{headers /[^\t]+/}@(end)
+@(output)
+<table style="float: left; margin-right: 50px;">
+  <tr>
+@   (rep)<th>@headers@(end)
+  </tr>
+@(end)
+@(repeat)
+@(coll)@{elems /[^\t]+/}@(end)
+@ (output)
+  <tr>
+@   (rep)<td>@elems</td>@(end)
+  </tr>
+@ (end)
+@(end)
+@(output)
+</table>
+@(end)

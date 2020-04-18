@@ -1,0 +1,26 @@
+@(output)
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Covid-19 Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+  </head>
+  <body>
+    <h2>Last updated on @(time-string-local (time) "%d %B, %Y")</h2>
+    <h4>Daily Death visualised for last 45 days (top 10 countries with highest death)</h4>
+    <img src="images/top/todayDeath.png">
+    <div style="display: inline-block">
+    <h4>Rise in death toll in last 1 and 5 days</h4>
+@   (file-get-string "diff.html")
+    </div>
+    <div style="display: inline-block">
+    <h4>Calculating "trending"</h4>
+    <p>Serious analysis should run regression to find slope. Here for simplicity we just sort by percentage change in last 2 days. Average of all change is added to denominator to get some sense of normalization.</p>
+@   (file-get-string "trending.html")
+    </div>
+    <hr>
+  </body>
+  <footer>This page is auto-generated using classic *nix CLI tools.</footer>
+</html>
+@(end)
