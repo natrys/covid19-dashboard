@@ -15,7 +15,7 @@ trending.html: fixed export.txr
 diff.html: fixed export.txr
 	./run.sh generate_diff
 
-images: images/*/*.png selected
+images: images/*/*.png
 
 images/%.png: fixed
 	./run.sh images

@@ -117,7 +117,7 @@ trending() {
 
 show_trending() {
   printf "Country\tDeath<br />t0\tDeath<br />t1\tΔ%%\tΔ%%<br />(normalized)\n"
-  ./run.sh trending 3 | awk 'IFS="\t", OFS="\t" {print $5, $2, $1, $3, $4}' | head -10
+  trending 3 | awk 'IFS="\t", OFS="\t" {print $5, $2, $1, $3, $4}' | head -10
 }
 
 generate_trending() {

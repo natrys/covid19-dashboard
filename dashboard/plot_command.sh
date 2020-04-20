@@ -4,7 +4,7 @@ ylim() {
   tail -1 $1 | tab 'max.[int.@ : skip(cut(array(@)[0], "\t"), 1)] .. @ / -30.0' 
 }
 
-echo "load 'plot'"
+echo "load 'plot.gplot'"
 
 cd data/
 
