@@ -101,23 +101,25 @@ lag() {
 }
 
 show_diff() {
-  awk 'OFS="\t" { print $1 - $2, $3 }' 
+  awk 'OFS="\t", FS="\t" { print $1 - $2, $3 }' 
 }
 
 show_percentage() {
-  awk -v c=$1 'OFS="\t" { if ($2 > 0) { print $1, $2, ($1 - $2) * 100 / $2, ($1 - $2) * 100 / ($2 + c), $3 } }' | sort -rn -k 4
+  awk -v c=$1 'OFS="\t", FS="\t" { if ($2 > 0) {
+    printf "%d\t%d\t%.1f\t%.1f\t%s\n", $1, $2, ($1 - $2) * 100 / $2, ($1 - $2) * 100 / ($2 + c), $3 }
+  }' | sort -rn -k 4
 }
 
 trending() {
   lag $1 < fixed > trending
-  local c=`show_diff < trending | tab 'avg.[uint.@:@]'`
+  local c=`show_diff < trending | tab 'avg.?[uint.@..@>0,@]'`
   show_percentage $c < trending
   rm trending
 }
 
 show_trending() {
   printf "Country\tDeath<br />t0\tDeath<br />t1\tΔ%%\tΔ%%<br />(normalized)\n"
-  trending 3 | awk 'IFS="\t", OFS="\t" {print $5, $2, $1, $3, $4}' | head -10
+  trending 3 | awk 'OFS="\t", FS="\t" {print $5, $2, $1, $3, $4}' | head -10
 }
 
 generate_trending() {

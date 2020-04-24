@@ -8,10 +8,7 @@ agents may lead to unexpected results. Please refer to its address rather than
 copy it. */
 
 
-
-
-
-	/* begin body type */	/* 1 - humanist sans a */
+tr:first-child{ border-bottom: 1px solid #555;}
 
 body	{	
 	font-size:	1em;
@@ -268,8 +265,11 @@ col, colgroup, table, tbody, td, tr	{
 	text-decoration:	none;
 	border-color:	black;
 	border-style:	none;
+  border-size: 0.5px;
 	background:	white;
 	}	
+
+th { border-style: none none solid none ; }
 		
 a:link	{	
 	text-decoration:	none;
@@ -537,17 +537,6 @@ div, center	{
 	border-style:	solid
 	}	
 		
-/*
-col, colgroup, table, tbody, td, tfoot, th, thead, tr	{	
-	margin-top:	0;
-	margin-bottom:	0;
-	padding-top:	0;
-	padding-bottom:	0;
-	border-top:	0;
-	border-bottom:	0;
-	}	
-*/
-
 td, th {
   padding-right: 20px;
 	line-height:	1.33em;
@@ -826,4 +815,6 @@ body {
 footer {
   font-size: 0.8em;
 }
+
+
 
