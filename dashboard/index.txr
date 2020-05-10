@@ -15,7 +15,7 @@
 @   (file-get-string "diff.html")
     </div>
     <div style="display: inline-block">
-    <h4>Calculating "trending"</h4>
+    <h4>Calculating "rising"</h4>
     <p>Serious analysis should run regression to find slope. Here for simplicity we just sort by percentage change in last 2 days. Average of all change is added to denominator to get some sense of normalization.</p>
 @   (file-get-string "trending.html")
     </div>
