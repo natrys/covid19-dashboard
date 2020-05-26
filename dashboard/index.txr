@@ -8,7 +8,7 @@
   </head>
   <body>
     <h2>Last updated on @(time-string-local (time) "%d %B, %Y")</h2>
-    <h4>Daily Death visualised for last 45 days (top 10 countries with highest death)</h4>
+    <h4>Daily Death visualised for last 60 days (top 10 countries with highest death)</h4>
     <img src="images/top/todayDeath.png">
     <div style="display: inline-block">
     <h4>Rise in death toll in last 1 and 5 days</h4>

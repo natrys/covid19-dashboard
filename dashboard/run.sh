@@ -101,11 +101,11 @@ lag() {
 }
 
 show_diff() {
-  awk 'OFS="\t", FS="\t" { print $1 - $2, $3 }' 
+  awk -v OFS="\t" -v FS="\t" '{ print $1 - $2, $3 }' 
 }
 
 show_percentage() {
-  awk -v c=$1 'OFS="\t", FS="\t" { if ($2 > 0) {
+  awk -v c=$1 -v FS="\t" -v OFS="\t" '{ if ($2 > 0) {
     printf "%d\t%d\t%.1f\t%.1f\t%s\n", $1, $2, ($1 - $2) * 100 / $2, ($1 - $2) * 100 / ($2 + c), $3 }
   }' | sort -rn -k 4
 }
@@ -119,7 +119,7 @@ trending() {
 
 show_trending() {
   printf "Country\tDeath<br />t0\tDeath<br />t1\tΔ%%\tΔ%%<br />(normalized)\n"
-  trending 3 | awk 'OFS="\t", FS="\t" {print $5, $2, $1, $3, $4}' | head -10
+  trending 3 | awk -v FS="\t" -v OFS="\t" '{print $5, $2, $1, $3, $4}' | head -10
 }
 
 generate_trending() {
@@ -128,9 +128,9 @@ generate_trending() {
 
 diff_table() {
   printf "Country\tDeath (1d)\n" > diff1.data
-  lag 2 < fixed | show_diff | sort -rn | head -20 | awk 'IFS="\t", OFS="\t" {print $2, $1}' >> diff1.data
+  lag 2 < fixed | show_diff | sort -rn | head -20 | awk -v IFS="\t" -v OFS="\t" '{print $2, $1}' >> diff1.data
   printf "Country\tDeath (5d)\n" > diff5.data
-  lag 6 < fixed | show_diff | sort -rn | head -20 | awk 'IFS="\t", OFS="\t" {print $2, $1}' >> diff5.data
+  lag 6 < fixed | show_diff | sort -rn | head -20 | awk -v IFS="\t" -v OFS="\t" '{print $2, $1}' >> diff5.data
 }
 
 generate_diff() {
