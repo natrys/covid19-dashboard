@@ -1,4 +1,4 @@
-last=45
+last=60
 
 ylim() {
   tail -1 $1 | tab 'max.[int.@ : skip(cut(array(@)[0], "\t"), 1)] .. @ / -30.0' 
