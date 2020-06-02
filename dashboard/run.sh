@@ -128,9 +128,9 @@ generate_trending() {
 
 diff_table() {
   printf "Country\tDeath (1d)\n" > diff1.data
-  lag 2 < fixed | show_diff | sort -rn | head -20 | awk -v IFS="\t" -v OFS="\t" '{print $2, $1}' >> diff1.data
+  lag 2 < fixed | show_diff | sort -rn | head -20 | awk -v FS="\t" -v OFS="\t" '{print $2, $1}' >> diff1.data
   printf "Country\tDeath (5d)\n" > diff5.data
-  lag 6 < fixed | show_diff | sort -rn | head -20 | awk -v IFS="\t" -v OFS="\t" '{print $2, $1}' >> diff5.data
+  lag 6 < fixed | show_diff | sort -rn | head -20 | awk -v FS="\t" -v OFS="\t" '{print $2, $1}' >> diff5.data
 }
 
 generate_diff() {
